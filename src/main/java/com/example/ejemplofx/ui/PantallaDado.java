@@ -21,8 +21,8 @@ public class PantallaDado extends BorderPane {
         labelResultado = new Label("?");
         labelResultado.setFont(new Font("Arial", 40));
         // Usaremos el choicebox para cambiar el color en la pantalla de los dados
-        lista = new ChoiceBox<>(FXCollections.observableArrayList("Verde","Azul","Rojo"));
-        lista.setValue("Azul");
+        lista = new ChoiceBox<>(FXCollections.observableArrayList("Azul","Verde","Rojo", "Negro", "Blanco"));
+        lista.setValue("Sin seleccionar");
         this.setCenter(dadoView);
         this.setBottom(boton);
         this.setTop(labelResultado);
@@ -32,8 +32,7 @@ public class PantallaDado extends BorderPane {
         BorderPane.setAlignment(labelResultado, Pos.TOP_CENTER);
             BorderPane.setAlignment(lista, Pos.TOP_RIGHT);
         // No poner esto pq esta feo: BorderPane.setAlignment(dadoView,Pos.BASELINE_LEFT);
-
-        setStyle("-fx-border-color: black; -fx-padding: 20;");
+        this.cambiarColorDado("Negro");
     }
 
     public void actualizarTexto(String texto) {
@@ -43,13 +42,17 @@ public class PantallaDado extends BorderPane {
         dadoView.cambiarCara();
     }
 
-    public void cambiarColor(String color) {
+    public void cambiarColorDado(String color) {
         if (color.equals("Verde")) {
             dadoView.setStyle("-fx-text-fill: green;");
         } else if (color.equals("Rojo")) {
             dadoView.setStyle("-fx-text-fill: red;");
-        } else {
+        } else if (color.equals("Negro")) {
+            dadoView.setStyle("-fx-text-fill: black;");
+        } else if (color.equals("Azul")){
             dadoView.setStyle("-fx-text-fill: blue;");
+        } else {
+            dadoView.setStyle("-fx-text-fill: white;");
         }
     }
 

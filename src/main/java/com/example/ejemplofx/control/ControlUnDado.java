@@ -12,10 +12,11 @@ public class ControlUnDado {
             suma += vista.getValor();
             vista.actualizarTexto(suma+"");
         });
+
         // Color
-        vista.getColor().getSelectionModel().selectedItemProperty().addListener((observable, valorNuevo, valorViejo) -> {
-            if (valorNuevo != null) {
-                vista.cambiarColor(valorNuevo);
+        vista.getColor().getSelectionModel().selectedItemProperty().addListener((observable, colorViejo, colorNuevo) -> {
+            if (colorNuevo != null) {
+                vista.cambiarColorDado(colorNuevo);
             }
         });
 
